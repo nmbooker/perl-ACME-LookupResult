@@ -18,6 +18,21 @@ exception in the C<not_found> case.
 
 =cut
 
+=head2 LIMITATIONS
+
+Mostly stability.  I'm not completely sure what precise interface I'm going
+to expose to constructors or clients.  This is reflected in my initial choice of
+the ACME namespace.
+
+I'm not sure how to, or whether to, communicate via enforcement whether undef
+is a valid looked up value and therefore somehow force the caller to check
+for success with e.g. C<Found> or C<NotFound> (or whatever aliases I may come
+up with like C<< $lookup->Succeeded >>), effectively disabling the C<OrUndef> option.  C<Slip> would continue to work because you can tell the difference with
+that between existance of undef C<(undef)> and nothing C<()> but it doesn't
+check that the client has checked that way.
+
+=cut
+
 use v5.28;
 use strict;
 use warnings;
